@@ -10,7 +10,6 @@ all:
           iso_wim_label: Windows Server 2019 SERVERSTANDARDCORE
           architecture: amd64
           driver_host_string: 2k19
-          force: true
           headless: true
 
           updates:
