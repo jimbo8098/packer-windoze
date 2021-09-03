@@ -85,15 +85,15 @@
     loop_control:
       index_var: idx
 
+  - name: start VM
+    command: >-
+      VBoxManage startvm
+      {{ ('windoze-' ~ inventory_hostname) | quote }}
+      --type {{ headless | ternary('headless', 'separate') }}
+
   - name: Setup VRDE
     command: >-
       VBoxManage controlvm
       {{ ('windoze-' ~ inventory_hostname) | quote }}
       vrde on
     when: headless
-
-  - name: start VM
-    command: >-
-      VBoxManage startvm
-      {{ ('windoze-' ~ inventory_hostname) | quote }}
-      --type {{ headless | ternary('headless', 'separate') }}
