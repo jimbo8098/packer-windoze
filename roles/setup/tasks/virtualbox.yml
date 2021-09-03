@@ -90,3 +90,11 @@
       VBoxManage startvm
       {{ ('windoze-' ~ inventory_hostname) | quote }}
       --type {{ headless | ternary('headless', 'separate') }}
+    when: not headless
+
+  - name: start VM
+    command: >-
+      VBoxHeadless --startvm
+      {{ ('windoze-' ~ inventory_hostname) | quote }}
+      --vrde on
+    when: headless
